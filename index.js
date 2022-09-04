@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 6858;
+const port = process.env.PORT || 35500;
 var request = require('request');
 
 var cors = require('cors');
@@ -56,8 +56,7 @@ app.get('/user', (req, res) => {
         user {
             name
             establishmentsInfo {
-                name
-                logoID,
+                name,
                 city,
                 website
             }
