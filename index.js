@@ -41,6 +41,28 @@ app.get('/auth', (req, res) => {
     });
 });
 
+app.get('/query', (req, res) => {
+    let token = req.query.token;
+    let schema = req.query.schema;
+
+    var options = {
+        'method': 'POST',
+        'url': ql,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Token': token
+        },
+        body: JSON.stringify({
+            query: schema,
+            variables: {}
+        })
+        };
+        request(options, function (error, response) {
+        if (error) throw new Error(error);
+            res.send(response.body);
+        });
+});
+
 app.get('/user', (req, res) => {
     let token = req.query.token;
 
